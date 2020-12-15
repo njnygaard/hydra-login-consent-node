@@ -5,9 +5,6 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 
 import routes from './routes'
-import login from './routes/login'
-import logout from './routes/logout'
-import consent from './routes/consent'
 
 const app = express()
 
@@ -23,10 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', routes)
-app.use('/login', login)
-app.use('/logout', logout)
-app.use('/consent', consent)
+app.use('/auth', routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
